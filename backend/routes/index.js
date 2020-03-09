@@ -5,7 +5,13 @@ const Recipe = require('../models/recipeSchema/recipe');
 router.get('/', async (req,res)=> {
     const recipes = await Recipe.find();
     console.log(recipes);
-    res.status(200).send(recipes);
+    res.status(200).send({recipes:recipes});
+});
+
+router.get('/:id', async (req , res) => {
+    console.log(req.params.id);
+    const recipe = await Recipe.findById(req.params.id);
+    res.status(200).send({recipe:recipe});
 });
 
 router.post('/', async (req , res) => {
