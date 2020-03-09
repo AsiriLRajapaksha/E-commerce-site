@@ -8,12 +8,17 @@ import { Recipe } from '../../recipe.model';
   styleUrls: ['./recipe-item.component.css']
 })
 export class RecipeItemComponent implements OnInit {
-  recipe : Recipe[];
+  recipes:Recipe[] = [];
 
   constructor(private recipeService:RecipeService) { }
 
   ngOnInit() {
-    this.recipeService.GetRecipes( recip);
+    this.recipeService.getRecipes();
+    this.recipeService.getRecipeUpdateListner()
+      .subscribe((recipeData : {recipes : Recipe[]}) =>{
+        this.recipes = recipeData.recipes
+      });
+    console.log("recipesjhbkjdsjfdsf ", this.recipes);
   }
 
   

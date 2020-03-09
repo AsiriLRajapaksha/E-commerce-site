@@ -1,24 +1,13 @@
 require('./models/db');
 const express = require('express');
 const mongoose = require('mongoose');
-// const exphbs = require('express-handlebars');
-// const path = require('path');
-// const bodyparser = require('body-parser');
-// const oderController = require('./controllers/oderController');
+
 const app = express();
 
-const postRoutes = require('./routes/index');
+const recipeRoutes = require('./routes/index');
 const dbConnect = require('./models/db');
 
 app.use(express.json({extended: true}));
-
-// mongoose.connect("mongodb://localhost/ecommerce",{useNewUrlParser: true})
-//     .then(()=> {
-//         console.log('Connect to the mongodb...');
-//     })
-//     .catch(error => {
-//         console.error("Not connect to mongodb....");
-//     });
 
 
 app.use((req, res, next) => {
@@ -34,7 +23,7 @@ app.use((req, res, next) => {
     next();
   });
   
-  app.use('/api/index',postRoutes); 
+  app.use('/api/recipe',recipeRoutes); 
   
   
   module.exports = app;

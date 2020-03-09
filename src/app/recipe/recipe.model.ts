@@ -1,5 +1,6 @@
 export interface Recipe{
-    name: String,
-    description: String,
-    imagePath: String
+    id : string,
+    name: string,
+    description: string,
+    imagePath: string
 }

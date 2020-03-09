@@ -10,6 +10,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { RecipeDetailsComponent } from './recipe/recipe-details/recipe-details.component';
 import { RecipeListComponent } from './recipe/recipe-list/recipe-list.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { RecipeItemComponent } from './recipe/recipe-list/recipe-item/recipe-item.component';
 
 @NgModule({
@@ -26,7 +27,8 @@ import { RecipeItemComponent } from './recipe/recipe-list/recipe-item/recipe-ite
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
