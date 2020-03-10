@@ -19,7 +19,8 @@ export class RecipeService{
                 id : recipe._id,
                 name : recipe.name,
                 description : recipe.description,
-                imagePath : recipe.imagePath
+                imagePath : recipe.imagePath,
+                ingredient : recipe.ingredient
               };
             })
           }

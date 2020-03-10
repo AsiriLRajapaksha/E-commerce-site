@@ -18,7 +18,11 @@ router.post('/', async (req , res) => {
     const recipe = new Recipe({
         name: req.body.name,
         description : req.body.description,
-        imagePath: req.body.imagePath
+        imagePath: req.body.imagePath,
+        ingredient: {
+            name:req.body.ingredient.name,
+            amount:req.body.ingredient.amount
+        }
     });
     const result = recipe.save();
     res.status(200).send(result);
