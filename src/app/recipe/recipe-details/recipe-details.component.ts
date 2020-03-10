@@ -3,6 +3,7 @@ import { Route } from '@angular/compiler/src/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { RecipeService } from '../recipe.service';
 import { Recipe } from '../recipe.model';
+import { ShoppingService } from 'src/app/shopping-list/shopping.service';
 
 @Component({
   selector: 'app-recipe-details',
@@ -12,10 +13,9 @@ import { Recipe } from '../recipe.model';
 export class RecipeDetailsComponent implements OnInit {
   id:string;
   recipeDetail:Recipe;
-  recipeImage: string;
-  recipeName: string;
 
-  constructor(private recipeService:RecipeService ,private route:ActivatedRoute) { }
+  constructor(private recipeService:RecipeService ,private route:ActivatedRoute, 
+              private shoppingService: ShoppingService) { }
 
   ngOnInit() {
     this.route.params
@@ -26,6 +26,10 @@ export class RecipeDetailsComponent implements OnInit {
           //   this.recipeDetail = recipe.recipe; 
           // });
       });
+  }
+
+  onAddShoppingList(){
+    this.shoppingService.addToShoppingList(this.recipeDetail);
   }
 
 }
