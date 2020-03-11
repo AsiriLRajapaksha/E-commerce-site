@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RecipeComponent } from './recipe/recipe.component';
 import { RecipeDetailsComponent } from './recipe/recipe-details/recipe-details.component';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 
 
 const routes: Routes = [
@@ -9,6 +10,7 @@ const routes: Routes = [
   {path:'recipes' , component:RecipeComponent , children:[
     {path:':id' , component:RecipeDetailsComponent}
   ]},
+  {path:'shopping-list' , component:ShoppingListComponent}
 ];
 
 @NgModule({

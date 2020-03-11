@@ -3,13 +3,17 @@ import { Recipe } from './recipe.model';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { map } from "rxjs/operators";
+import { Ingredient } from '../shared/ingredient.model';
+import { ShoppingService } from '../shopping-list/shopping.service';
 
 @Injectable({providedIn: "root"})
 export class RecipeService{
     private recipes:Recipe[] = [];
     private recipesUpdated = new Subject<{recipes:Recipe[]}>();
+    private ingredient : Ingredient[];
+    private updatedIngredient = new Subject<Ingredient[]>();
 
-    constructor(private http: HttpClient){}
+    constructor(private shoppingService : ShoppingService ,private http: HttpClient ){}
 
     getRecipes(){
         return this.http.get<{recipes:any}>("http://localhost:3000/api/recipe")
@@ -45,5 +49,16 @@ export class RecipeService{
         return recipe;
         // console.log(id);
         // return this.http.get<{recipe:Recipe}>("http://localhost:3000/api/recipe/" + id );
+    }
+
+    addToShoppingList(ingredient : Ingredient[]){
+        // this.ingredient = ingredient;
+        // this.updatedIngredient.next({...this.ingredient});
+        return this.shoppingService.addToShoppingList(ingredient);
+    }
+
+    getShoppingList(){
+      console.log(this.ingredient);
+      return this.updatedIngredient.asObservable();
     }
 }

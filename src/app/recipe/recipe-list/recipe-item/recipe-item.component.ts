@@ -17,7 +17,7 @@ export class RecipeItemComponent implements OnInit {
     this.recipeService.getRecipeUpdateListner()
       .subscribe((recipeData : {recipes : Recipe[]}) =>{
         this.recipes = recipeData.recipes
-        console.log(recipeData.recipes[0].description);
+        // console.log(recipeData.recipes[0].description);
       });
   }
 

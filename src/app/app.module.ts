@@ -14,6 +14,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { RecipeItemComponent } from './recipe/recipe-list/recipe-item/recipe-item.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
+import { DropdownDirective } from './shared/dropdown.directive';
+import { RecipeService } from './recipe/recipe.service';
+import { ShoppingService } from './shopping-list/shopping.service';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,7 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
     RecipeComponent,
     RecipeDetailsComponent,
     RecipeListComponent,
+    DropdownDirective,
     RecipeItemComponent,
     ShoppingListComponent,
     ShoppingEditComponent
@@ -34,7 +38,7 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [RecipeService,ShoppingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
