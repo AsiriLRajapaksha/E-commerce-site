@@ -1,16 +1,15 @@
 const express = require('express');
 const routes = express.Router();
-const Shopping = require('../models/shoppingListSchema/shopping');
+const ShoppingList = require('../models/shoppingListSchema/shopping');
 
 routes.post('/' , async (req , res) => {
-    const shopping = new Shopping({
-            name: req.body.shoppingList.name,
-            amount: req.body.shoppingList.amount    
+    const shopping = new ShoppingList({
+        ingredients : req.body.ingredients   
     });
 
     const result = await shopping.save();
 
-    res.status(200).send(200);
+    res.status(200).send({result:result});
 });
 
 module.exports = routes;
