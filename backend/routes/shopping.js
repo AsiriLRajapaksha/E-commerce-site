@@ -1,15 +1,24 @@
 const express = require('express');
-const routes = express.Router();
+const router = express.Router();
 const ShoppingList = require('../models/shoppingListSchema/shopping');
 
-routes.post('/' , async (req , res) => {
+router.post('/' , async (req , res) => {
+    // console.log(req.body);
     const shopping = new ShoppingList({
-        ingredients : req.body.ingredients   
+        ingredients:req.body
     });
 
     const result = await shopping.save();
+    console.log(result);
 
     res.status(200).send({result:result});
 });
 
-module.exports = routes;
+router.get('/' , async (req , res) => {
+
+    const ingredients = await ShoppingList.find();
+    res.status(200).send({ingredients:ingredients});
+
+});
+
+module.exports = router;

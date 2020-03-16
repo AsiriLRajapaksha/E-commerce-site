@@ -51,14 +51,10 @@ export class RecipeService{
         // return this.http.get<{recipe:Recipe}>("http://localhost:3000/api/recipe/" + id );
     }
 
-    addToShoppingList(ingredient : Ingredient[]){
+    addToShoppingList(ingredients : Ingredient[]){
         // this.ingredient = ingredient;
         // this.updatedIngredient.next({...this.ingredient});
-        return this.shoppingService.addToShoppingList(ingredient);
-    }
-
-    getShoppingList(){
-      console.log(this.ingredient);
-      return this.updatedIngredient.asObservable();
+        return this.shoppingService.addToShoppingList(ingredients);
+        
     }
 }

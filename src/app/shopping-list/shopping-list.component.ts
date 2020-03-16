@@ -8,20 +8,20 @@ import { Subscription } from 'rxjs';
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.css']
 })
-export class ShoppingListComponent implements OnInit , OnDestroy{
-  ingredient : Ingredient[];
+export class ShoppingListComponent implements OnInit , OnDestroy {
+  ingredients : Ingredient[];
   subscribe : Subscription;
-  index:number;
+  // index:number;
 
   constructor(private shoppingService: ShoppingService) { }
 
   ngOnInit() {
-    this.ingredient = this.shoppingService.getShoppingListDetails();
+    this.ingredients = this.shoppingService.getShoppingListDetails();
     this.subscribe = this.shoppingService.getUpdatedShoppingList()
-      .subscribe( (updatedList:Ingredient[]) => {
-        this.ingredient = updatedList;
-      })
-    console.log(this.ingredient);
+      .subscribe( updatedList => {
+        this.ingredients = updatedList;
+      });
+    console.log(this.ingredients);
   }
 
   ngOnDestroy(){
