@@ -12,18 +12,18 @@ export class ShoppingEditComponent implements OnInit {
 
   ingredient : Ingredient[];
 
-  constructor(private shoppingList: ShoppingService) { }
+  constructor(private shoppingService: ShoppingService) { }
 
   ngOnInit() {
   }
 
   onAddToList( name : HTMLInputElement , amount){
     const newIngredient = new Ingredient(name.value , amount.value);
-    this.shoppingList.addNewIngredients(newIngredient);
+    this.shoppingService.addNewIngredients(newIngredient);
   }
 
   onDelete(){
-    // this.shoppingService.onDeleteIngredient();
+     this.shoppingService.deteteIngredient();
   }
 
 }
