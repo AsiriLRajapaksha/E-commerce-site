@@ -15,6 +15,8 @@ export class ShoppingService{
     
     private index :number = -1;
 
+    private addTocart:Boolean = false;
+
     constructor(private http:HttpClient ){}
 
     addToShoppingList(ingredient : Ingredient[] ){
@@ -41,10 +43,21 @@ export class ShoppingService{
 
     deteteIngredient(){
         console.log(this.index);
-        // const ingredient = this.ingredients.filter(c => c[this.index] != this.ingredients[this.index]);
-        // console.log(ingredient);
         this.ingredients.splice(this.index , 1);
         this.updatedShoppingList.next(this.ingredients);
+    }
+
+    clearIngredients(){
+        this.ingredients = [];
+        this.updatedShoppingList.next(this.ingredients);
+    }
+
+    addToShoopingcart(addTocart:Boolean){
+        this.addTocart = addTocart;
+    }
+
+    addIngredientsToCart(){
+        return this.addTocart;
     }
     
 

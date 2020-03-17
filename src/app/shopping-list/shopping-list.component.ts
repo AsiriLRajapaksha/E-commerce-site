@@ -12,6 +12,7 @@ export class ShoppingListComponent implements OnInit , OnDestroy {
   ingredients : Ingredient[];
   subscribe : Subscription;
   index:number;
+  addTocart:Boolean = false;
 
   constructor(private shoppingService: ShoppingService) { }
 
@@ -30,6 +31,11 @@ export class ShoppingListComponent implements OnInit , OnDestroy {
 
   getIndex( i : number){
     this.shoppingService.getIndex(i);
+  }
+
+  onAddTocart(){
+     this.addTocart= true;
+    this.shoppingService.addToShoopingcart(this.addTocart);
   }
   
 
