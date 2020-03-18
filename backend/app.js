@@ -5,6 +5,7 @@ const app = express();
 
 const recipeRoutes = require('./routes/index');
 const shoppingRoutes = require('./routes/shopping');
+const shoppingCart = require('./routes/shopping-cart');
 const dbConnect = require('./models/db');
 
 app.use(express.json({extended: true}));
@@ -25,6 +26,7 @@ app.use((req, res, next) => {
   
   app.use('/api/recipe',recipeRoutes); 
   app.use('/api/shopping',shoppingRoutes); 
+  app.use('/api/shopping-cart',shoppingCart); 
   
   
   module.exports = app;

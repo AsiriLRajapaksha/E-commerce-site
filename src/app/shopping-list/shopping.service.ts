@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Ingredient } from '../shared/ingredient.model';
 import { Subject } from 'rxjs';
 import { EventEmitter } from '@angular/core';
+import { Price } from '../shopping-cart/price.model';
 
 @Injectable({providedIn:"root"})
 export class ShoppingService{
@@ -10,8 +11,10 @@ export class ShoppingService{
     private ingredients:Ingredient[] = [
          new Ingredient('Apple',10)
       ];
+    private price : Price[] = [];
 
     private updatedShoppingList = new Subject<Ingredient[]>();
+    private updatedShoppingCart = new Subject<Ingredient[]>();
     
     private index :number = -1;
 
@@ -58,6 +61,14 @@ export class ShoppingService{
 
     addIngredientsToCart(){
         return this.addTocart;
+    }
+
+    getPrice(){
+        this.http.get<{}>('http://localhost:3000/api/shopping-cart')
+            .subscribe( price => {
+                this.price = price[0].price;
+                console.log(this.price[0]);
+            });
     }
     
 

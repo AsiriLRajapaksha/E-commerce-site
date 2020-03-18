@@ -16,8 +16,8 @@ export class ShoppingCartComponent implements OnInit {
   ngOnInit() {
      this.addTocart = this.shoppingService.addIngredientsToCart();
      if(this.addTocart){
-       console.log("bdsabhshndjksnadisndkjnfbdkdsaf");
        this.ingredients = this.shoppingService.getShoppingListDetails();
+       this.shoppingService.getPrice();
      }
   }
 
