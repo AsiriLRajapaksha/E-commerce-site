@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingService } from '../shopping-list/shopping.service';
 import { Ingredient } from '../shared/ingredient.model';
+import { ShoppingCart } from './shopping-cart.model';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -10,6 +11,7 @@ import { Ingredient } from '../shared/ingredient.model';
 export class ShoppingCartComponent implements OnInit {
   addTocart:Boolean = false;
   ingredients : Ingredient[];
+  cartDetails : ShoppingCart;
 
   constructor(private shoppingService:ShoppingService) { }
 
@@ -17,7 +19,8 @@ export class ShoppingCartComponent implements OnInit {
      this.addTocart = this.shoppingService.addIngredientsToCart();
      if(this.addTocart){
        this.ingredients = this.shoppingService.getShoppingListDetails();
-       this.shoppingService.getPrice();
+      //  this.shoppingService.getPrices();
+        // this.shoppingService.getIngredientsDetailsToCart();
      }
   }
 
