@@ -1,7 +1,7 @@
 <section class="jumbotron text-center">
     <div class="container">
-        <h1 class="jumbotron-heading">ş𝑯⚬⍴⍴ıƝ𝐺 𝘤𝖠𝘙𝜯</h1>
-        <!-- <h1 class="jumbotron-heading">𝕊ℍ𝕆ℙℙ𝕀ℕ𝔾 ℂ𝔸ℝ𝕋</h1> -->
+        <!-- <h1 class="jumbotron-heading">ş𝑯⚬⍴⍴ıƝ𝐺 𝘤𝖠𝘙𝜯</h1> -->
+        <h1 class="jumbotron-heading">𝕊ℍ𝕆ℙℙ𝕀ℕ𝔾 ℂ𝔸ℝ𝕋</h1>
         <!-- <img class="img-cart" src="https://cdn2.iconfinder.com/data/icons/seo-internet-marketing-2-5/256/E-commerce_Optimization-512.png" alt=""> -->
         <img class="img-cart" src="http://getdrawings.com/free-icon/cart-icon-vector-57.png" alt="">
         <!-- <img class="img-cart" src="https://www.pngkey.com/png/full/261-2611214_picture-transparent-supermarket-remove-shopping-icon-e-shopping.png" alt=""> -->
@@ -15,21 +15,17 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <!-- <th scope="col"> </th> -->
                             <th scope="col" class="text-size"> 𝓟𝓻𝓸𝓭𝓾𝓬𝓽 </th>
-                            <!-- <th scope="col">Available</th> -->
                             <th scope="col" class="text-center text-size">𝓠𝓾𝓪𝓷𝓽𝓲𝓽𝔂 </th>
                             <th scope="col" class="text-right text-size"> 𝓟𝓻𝓲𝓬𝓮</th>
                             <th> </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let ingredient of ingredients">
-                            <!-- <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td> -->
-                            <td>{{ingredient.name}}</td>
-                            <!-- <td>In stock</td> -->
-                            <td><input class="form-control size" type="text" value="{{ingredient.amount}}"/></td>
-                            <td class="text-right">124,90 €</td>
+                        <tr *ngFor="let cartDetail of cartDetails">
+                            <td>{{cartDetail.name}}</td>
+                            <td><input class="form-control size" type="text" value="{{cartDetail.amount}}"/></td>
+                            <td class="text-right">{{cartDetail.price}}$</td>
                             <td class="text-right"><button class="glyphicon glyphicon-delete"><i class="glyphicon glyphicon-trash danger"></i> </button> </td>
                         </tr>
                     </tbody>

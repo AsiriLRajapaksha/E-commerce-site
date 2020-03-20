@@ -2,25 +2,24 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Ingredient } from '../shared/ingredient.model';
 import { Subject } from 'rxjs';
-import { EventEmitter } from '@angular/core';
 import { Price } from '../shopping-cart/price.model';
-import { ShoppingCart } from '../shopping-cart/shopping-cart.model';
 import { Cart } from '../shared/cart.model';
 
 @Injectable({providedIn:"root"})
 export class ShoppingService{
 
     private ingredients:Ingredient[] = [
-         new Ingredient('Apple',10)
+        //  new Ingredient('Apple',10)
       ];
     private getPriceForCalculation : Price[] = [];
-    private price = [];
+
     private Total = 0 ;
-    private shoppingCart:ShoppingCart;
+
     private cart:Cart[] = [];
 
     private updatedShoppingList = new Subject<Ingredient[]>();
-    private updatedShoppingCart = new Subject<Ingredient[]>();
+
+    private updatedShoppingCart = new Subject<Cart[]>();
     
     private index :number = -1;
 
@@ -61,6 +60,8 @@ export class ShoppingService{
         this.updatedShoppingList.next(this.ingredients);
     }
 
+    /****************************************Regarding CART*************************************************** */
+
     addToShoopingcart(addTocart:Boolean){
         this.addTocart = addTocart;
     }
@@ -70,23 +71,23 @@ export class ShoppingService{
     }
 
     calculatePrice(){
-        for(var i = 0 ; i<1 ; i++){
+        for(var i = 0 ; i<this.ingredients.length ; i++){
             var sum = 0;
-            if(this.ingredients[i].name == "tomato"){
-                sum += this.getPriceForCalculation[0].tomato * this.ingredients[i].amount;
+
+            if(this.ingredients[i].name == "Tomato"){
+                sum += this.getPriceForCalculation[0].Tomato * this.ingredients[i].amount;
                 this.Total += sum;
-                this.price.push(sum);
-                this.cart.ingredients = 
+                this.cart.push((new Cart(this.ingredients[i].name ,this.ingredients[i].amount ,sum)));
+                console.log(sum);
             }
             if(this.ingredients[i].name == "Apple"){
-                sum += this.getPriceForCalculation[0].apple * this.ingredients[i].amount;
+                sum += this.getPriceForCalculation[0].Apple * this.ingredients[i].amount;
                 this.Total += sum;
-                console.log("ksdjfnjsdnfjkd");
-                this.price.push(sum);
+                this.cart.push((new Cart(this.ingredients[i].name ,this.ingredients[i].amount ,sum)));
             }
 
         }
-        console.log(this.price);
+
     }
 
     getPrices(){
@@ -99,11 +100,7 @@ export class ShoppingService{
     }
 
     getIngredientsDetailsToCart(){
-        // const newCart = new Cart("","");
-        // this.shoppingCart.ingredients = [];
-        // this.shoppingCart.price = this.price;
-        console.log(this.shoppingCart);
-        // return this.shoppingCart;
+        return this.cart;
     }
     
 
