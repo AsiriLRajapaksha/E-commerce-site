@@ -22,7 +22,6 @@ export class ShoppingListComponent implements OnInit , OnDestroy {
       .subscribe( updatedList => {
         this.ingredients = updatedList;
       });
-    this.shoppingService.getPrices();
     console.log(this.ingredients);
   }
 
@@ -35,6 +34,7 @@ export class ShoppingListComponent implements OnInit , OnDestroy {
   }
 
   onAddTocart(){
+    this.shoppingService.getPrices();
      this.shoppingService.getIngredientsDetailsToCart();
     this.addTocart= true;
     this.shoppingService.addToShoopingcart(this.addTocart);

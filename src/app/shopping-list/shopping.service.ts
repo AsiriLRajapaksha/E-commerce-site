@@ -71,29 +71,51 @@ export class ShoppingService{
     }
 
     calculatePrice(){
+        var name;
+        var amount;
         for(var i = 0 ; i<this.ingredients.length ; i++){
             var sum = 0;
+            
+            // if(this.ingredients[i].name == "Tomato"){
+                //     sum += this.getPriceForCalculation[0].Tomato * this.ingredients[i].amount;
+                //     this.Total += sum;
+                //     this.cart.push((new Cart(this.ingredients[i].name ,this.ingredients[i].amount ,sum)));
+                //     console.log(sum);
+                // }
+                // if(this.ingredients[i].name == "Apple"){
+                    //     sum += this.getPriceForCalculation[0].Apple * this.ingredients[i].amount;
+                    //     this.Total += sum;
+                    //     this.cart.push((new Cart(this.ingredients[i].name ,this.ingredients[i].amount ,sum)));
+                    // }
+                    name = this.ingredients[i].name;
+                    amount = this.ingredients[i].amount;
 
-            if(this.ingredients[i].name == "Tomato"){
-                sum += this.getPriceForCalculation[0].Tomato * this.ingredients[i].amount;
-                this.Total += sum;
-                this.cart.push((new Cart(this.ingredients[i].name ,this.ingredients[i].amount ,sum)));
-                console.log(sum);
-            }
-            if(this.ingredients[i].name == "Apple"){
-                sum += this.getPriceForCalculation[0].Apple * this.ingredients[i].amount;
-                this.Total += sum;
-                this.cart.push((new Cart(this.ingredients[i].name ,this.ingredients[i].amount ,sum)));
+            for(var j = 0 ; j < this.getPriceForCalculation.length ; j++){
+                
+                if(this.getPriceForCalculation[0][j].name == name){
+                    sum += this.getPriceForCalculation[0][j].price * this.ingredients[i].amount;
+                    this.Total += sum;
+                    this.cart.push((new Cart(name ,amount ,sum)));
+                    console.log(sum);
+                }
             }
 
         }
 
     }
 
+    // getPrices(){
+    //     this.http.get<{}>('http://localhost:3000/api/shopping-cart')
+    //         .subscribe( price => {
+    //             this.getPriceForCalculation = price[0].price;
+    //             console.log(this.getPriceForCalculation);
+    //             this.calculatePrice();
+    //         });
+    // }
     getPrices(){
-        this.http.get<{}>('http://localhost:3000/api/shopping-cart')
+        this.http.get<{prices:any}>('http://localhost:3000/api/shopping-cart')
             .subscribe( price => {
-                this.getPriceForCalculation = price[0].price;
+                this.getPriceForCalculation.push(price.prices);
                 console.log(this.getPriceForCalculation);
                 this.calculatePrice();
             });
