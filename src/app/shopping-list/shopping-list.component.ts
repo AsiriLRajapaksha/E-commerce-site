@@ -13,6 +13,7 @@ export class ShoppingListComponent implements OnInit , OnDestroy {
   subscribe : Subscription;
   index:number;
   addTocart:Boolean = false;
+  isIngredients:boolean = false;
 
   constructor(private shoppingService: ShoppingService) { }
 
@@ -21,6 +22,9 @@ export class ShoppingListComponent implements OnInit , OnDestroy {
     this.subscribe = this.shoppingService.getUpdatedShoppingList()
       .subscribe( updatedList => {
         this.ingredients = updatedList;
+        if(this.ingredients.length>0){
+          this.isIngredients=true;
+        }
       });
     console.log(this.ingredients);
   }

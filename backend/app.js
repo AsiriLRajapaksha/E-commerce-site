@@ -3,9 +3,9 @@ const express = require('express');
 
 const app = express();
 
-const recipeRoutes = require('./routes/index');
-const shoppingRoutes = require('./routes/shopping');
-const shoppingCart = require('./routes/shopping-cart');
+const recipeRoutes = require('./routes/recipe/recipe');
+const shoppingRoutes = require('./routes/shopping-list/shopping');
+const shoppingCart = require('./routes/shopping-cart/shopping-cart');
 const dbConnect = require('./models/db');
 
 app.use(express.json({extended: true}));

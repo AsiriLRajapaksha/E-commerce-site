@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Price = require('../models/shoppingPrice.js/shoppingPrice');
+const Price = require('../../models/shopping-price/shoppingPrice');
 
 router.post('/' , async (req , res) => {
     const price = new Price({

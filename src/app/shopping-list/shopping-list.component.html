@@ -5,6 +5,7 @@
     <ul class="list-group">
       <a style="cursor:pointer" class="list-group-item" *ngFor="let ingredient of ingredients;let i = index" (click)="getIndex(i)">
       {{ ingredient.name }} ({{ ingredient.amount }})
+      <i class="glyphicon glyphicon-trash danger pull-right" (click)="delete(i)" *ngIf="isIngredients"></i>
       </a>
     </ul>
     <button class="btn btn-success" type="button" (click)=onAddTocart()>Add To Cart</button>

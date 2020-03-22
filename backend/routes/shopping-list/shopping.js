@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const ShoppingList = require('../models/shoppingListSchema/shopping');
+const ShoppingList = require('../../models/shopping-list/shopping');
 
 router.post('/' , async (req , res) => {
     // console.log(req.body);

@@ -8,6 +8,8 @@ import { Cart } from '../shared/cart.model';
 @Injectable({providedIn:"root"})
 export class ShoppingService{
 
+    private getPriceCheck : boolean = true;
+
     private ingredients:Ingredient[] = [
         //  new Ingredient('Apple',10)
       ];
@@ -74,8 +76,9 @@ export class ShoppingService{
     }
 
     calculatePrice(){
-        var name;
-        var amount;
+        var name:string;
+        var amount:number;
+ 
         for(var i = 0 ; i<this.ingredients.length ; i++){
             var sum = 0;
             name = this.ingredients[i].name;
@@ -83,8 +86,8 @@ export class ShoppingService{
 
             for(var j = 0 ; j < this.getPriceForCalculation.length ; j++){
                 
-                if(this.getPriceForCalculation[0][j].name == name){
-                    sum += this.getPriceForCalculation[0][j].price * this.ingredients[i].amount;
+                if(this.getPriceForCalculation[j].name == name){
+                    sum += this.getPriceForCalculation[j].price * this.ingredients[i].amount;
                     this.Total += sum;
                     this.cart.push((new Cart(name ,amount ,sum)));
                     this.updatedShoppingCart.next(this.cart);
@@ -97,13 +100,17 @@ export class ShoppingService{
     }
 
     getPrices(){
-        if(this.addTocart){
+        if(this.getPriceCheck){
             this.http.get<{prices:any}>('http://localhost:3000/api/shopping-cart')
             .subscribe( price => {
-                this.getPriceForCalculation.push(price.prices);
+                this.getPriceForCalculation = price.prices;
                 console.log(this.getPriceForCalculation);
                 this.calculatePrice();
             });
+            this.getPriceCheck = false;
+        }else{
+            this.calculatePrice();
+            console.log("get erlier");
         }
     }
 
@@ -117,7 +124,7 @@ export class ShoppingService{
 
     deleteIngredientInCart(i : number){
         // this.cart = this.cart.filter(c => c[i] = this.cart[i]);
-        this.cart.splice(i , 1);
+        this.cart.splice(i ,1);
         this.updatedShoppingCart.next(this.cart);
     }
     
