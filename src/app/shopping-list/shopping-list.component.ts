@@ -34,10 +34,10 @@ export class ShoppingListComponent implements OnInit , OnDestroy {
   }
 
   onAddTocart(){
-    this.shoppingService.getPrices();
-     this.shoppingService.getIngredientsDetailsToCart();
     this.addTocart= true;
     this.shoppingService.addToShoopingcart(this.addTocart);
+    this.shoppingService.getPrices();
+    // this.shoppingService.getIngredientsDetailsToCart();
   }
   
 

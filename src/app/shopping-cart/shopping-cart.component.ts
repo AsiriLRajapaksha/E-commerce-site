@@ -11,6 +11,7 @@ import { Cart } from '../shared/cart.model';
 export class ShoppingCartComponent implements OnInit {
   addTocart:Boolean = false;
   cartDetails : Cart[];
+  i:number;
 
   constructor(private shoppingService:ShoppingService) { }
 
@@ -19,6 +20,10 @@ export class ShoppingCartComponent implements OnInit {
      if(this.addTocart){
        this.cartDetails = this.shoppingService.getIngredientsDetailsToCart();
      }
+  }
+
+  delete(i:number){
+    this.shoppingService.deleteIngredientInCart(i);
   }
 
 }

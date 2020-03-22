@@ -22,11 +22,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let cartDetail of cartDetails">
+                        <tr *ngFor="let cartDetail of cartDetails;let i = index">
                             <td>{{cartDetail.name}}</td>
                             <td><input class="form-control size" type="text" value="{{cartDetail.amount}}"/></td>
                             <td class="text-right">{{cartDetail.price}}$</td>
-                            <td class="text-right"><button class="glyphicon glyphicon-delete"><i class="glyphicon glyphicon-trash danger"></i> </button> </td>
+                            <td class="text-right"><button class="glyphicon glyphicon-delete"><i class="glyphicon glyphicon-trash danger" (click)="delete(i)"></i> </button> </td>
                         </tr>
                     </tbody>
                 </table>
