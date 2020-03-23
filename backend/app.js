@@ -3,10 +3,11 @@ const express = require('express');
 
 const app = express();
 
+const dbConnect = require('./models/db');
 const recipeRoutes = require('./routes/recipe/recipe');
 const shoppingRoutes = require('./routes/shopping-list/shopping');
 const shoppingCart = require('./routes/shopping-cart/shopping-cart');
-const dbConnect = require('./models/db');
+const userAuth = require('./routes/auth/user');
 
 app.use(express.json({extended: true}));
 
@@ -27,6 +28,7 @@ app.use((req, res, next) => {
   app.use('/api/recipe',recipeRoutes); 
   app.use('/api/shopping',shoppingRoutes); 
   app.use('/api/shopping-cart',shoppingCart); 
+  app.use('/api/auth',userAuth); 
   
   
   module.exports = app;

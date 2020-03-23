@@ -3,7 +3,7 @@
     <app-shopping-edit ></app-shopping-edit>
     <hr>
     <ul class="list-group">
-      <a style="cursor:pointer" class="list-group-item" *ngFor="let ingredient of ingredients;let i = index" (click)="getIndex(i)">
+      <a style="cursor:pointer" class="list-group-item clearfix" *ngFor="let ingredient of ingredients;let i = index" (click)="getIndex(i)">
       {{ ingredient.name }} ({{ ingredient.amount }})
       <i class="glyphicon glyphicon-trash danger pull-right" (click)="delete(i)" *ngIf="isIngredients"></i>
       </a>
