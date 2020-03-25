@@ -5,7 +5,6 @@ import { ReactiveFormsModule , FormsModule} from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { RecipeComponent } from './recipe/recipe.component';
@@ -30,12 +29,12 @@ import {
   MatProgressSpinnerModule,
   MatPaginatorModule
 } from "@angular/material";
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    AuthComponent,
     LoginComponent,
     SignupComponent,
     RecipeComponent,
@@ -62,7 +61,7 @@ import {
     MatProgressSpinnerModule,
     MatPaginatorModule
   ],
-  providers: [RecipeService,ShoppingService],
+  providers: [RecipeService,ShoppingService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
