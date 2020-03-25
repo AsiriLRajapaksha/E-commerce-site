@@ -5,6 +5,8 @@ import { RecipeDetailsComponent } from './recipe/recipe-details/recipe-details.c
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 
 const routes: Routes = [
@@ -17,6 +19,12 @@ const routes: Routes = [
   ]},
   {
     path:'shopping-cart',component:ShoppingCartComponent
+  },
+  {
+    path:'login', component:LoginComponent
+  },
+  {
+    path:'signup', component:SignupComponent
   }
 ];
 

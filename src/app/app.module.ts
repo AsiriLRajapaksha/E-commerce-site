@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule , FormsModule} from "@angular/forms";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +20,16 @@ import { RecipeService } from './recipe/recipe.service';
 import { ShoppingService } from './shopping-list/shopping.service';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {
+  MatInputModule,
+  MatCardModule,
+  MatButtonModule,
+  MatToolbarModule,
+  MatExpansionModule,
+  MatProgressSpinnerModule,
+  MatPaginatorModule
+} from "@angular/material";
 
 @NgModule({
   declarations: [
@@ -41,6 +52,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule , 
+    FormsModule,
+    MatInputModule,
+    MatCardModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatExpansionModule,
+    MatProgressSpinnerModule,
+    MatPaginatorModule
   ],
   providers: [RecipeService,ShoppingService],
   bootstrap: [AppComponent]
