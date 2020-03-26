@@ -30,6 +30,7 @@ import {
   MatPaginatorModule
 } from "@angular/material";
 import { AuthService } from './auth/auth.service';
+import { AuthInterceptor } from './auth/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,7 @@ import { AuthService } from './auth/auth.service';
     MatProgressSpinnerModule,
     MatPaginatorModule
   ],
-  providers: [RecipeService,ShoppingService,AuthService],
+  providers: [RecipeService,ShoppingService,AuthService,{provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

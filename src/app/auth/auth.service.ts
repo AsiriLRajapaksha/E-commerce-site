@@ -5,8 +5,13 @@ import { UserLogin } from './user-login.model';
 
 @Injectable({providedIn:"root"})
 export class AuthService{
+  private token:string;
 
   constructor(private http:HttpClient){}
+
+   getToken(){
+     return this.token;
+   }
 
    login(email:string , password:string){
 
@@ -16,8 +21,8 @@ export class AuthService{
       };
 
       this.http.post<{token:string}>("http://localhost:3000/api/auth/login",userLoginData)
-        .subscribe( token => {
-          console.log(token);
+        .subscribe( response => {
+          this.token = response.token;
         });
    }
 
