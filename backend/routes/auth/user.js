@@ -32,8 +32,8 @@ router.post('/login' , (req , res) => {
     let fetchUser;
     User.findOne({email:req.body.email})
       .then( user => {
+          console.log("1 stage............");
           if(!user){
-              console.log("1 stage............");
               return res.status(401).send({
                   message:'Auth Failed'
               });
@@ -42,8 +42,8 @@ router.post('/login' , (req , res) => {
           return bcrypt.compare(req.body.password , user.password);
       })
       .then( result => {
+          console.log("2 stage............");
           if(!result){
-            console.log("2 stage............");
             return res.status(401).send({
                 message:'Auth Failed'
             });
