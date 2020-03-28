@@ -2,6 +2,7 @@ import { Component, OnInit, OnChanges, OnDestroy } from '@angular/core';
 import { ShoppingService } from './shopping.service';
 import { Ingredient } from '../shared/ingredient.model';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-shopping-list',
@@ -11,13 +12,16 @@ import { Subscription } from 'rxjs';
 export class ShoppingListComponent implements OnInit , OnDestroy {
   ingredients : Ingredient[];
   subscribe : Subscription;
+  sub2:Subscription;
   index:number;
   addTocart:Boolean = false;
   isIngredients:boolean = false;
+  isAuthonticated:boolean = true;
 
   constructor(private shoppingService: ShoppingService) { }
 
   ngOnInit() {
+
     this.ingredients = this.shoppingService.getShoppingListDetails();
     this.subscribe = this.shoppingService.getUpdatedShoppingList()
       .subscribe( updatedList => {
@@ -27,6 +31,7 @@ export class ShoppingListComponent implements OnInit , OnDestroy {
         }
       });
     console.log(this.ingredients);
+
   }
 
   ngOnDestroy(){
@@ -38,10 +43,16 @@ export class ShoppingListComponent implements OnInit , OnDestroy {
   }
 
   onAddTocart(){
+    // if(this.isAuthonticated){
+    //   this.addTocart= true;
+    //   this.shoppingService.addToShoopingcart(this.addTocart);
+    //   this.shoppingService.getPrices();
+    // }else{
+    //   alert("Please Login Before add Ingredients to the cart........");
+    // }
     this.addTocart= true;
-    this.shoppingService.addToShoopingcart(this.addTocart);
-    this.shoppingService.getPrices();
-    // this.shoppingService.getIngredientsDetailsToCart();
+      this.shoppingService.addToShoopingcart(this.addTocart);
+      this.shoppingService.getPrices();
   }
   
 

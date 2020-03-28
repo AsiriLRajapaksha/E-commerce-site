@@ -4,7 +4,7 @@
         <a class="navbar-brand" href="#">Recipes</a>
       </div>
      
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right" *ngIf="!isAuthonticated">
         <li><a routerLink="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         <li><a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
@@ -13,9 +13,10 @@
           <li routerLinkActive="active"><a  routerLink="/recipes" >Recipes</a></li>
           <li routerLinkActive="active"><a  routerLink="/shopping-list" >Shopping List</a></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li *ngIf="i"><a href="#" routerLinkActive="active" routerLink='/shopping-cart' class="item">({{i}})<span  class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a></li>
-          <li class="dropdown" appDropdown><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="glyphicon glyphicon-user"> User management<span class="caret"></span></a>
+        <ul class="nav navbar-nav navbar-right" *ngIf="isAuthonticated">
+          <li *ngIf="i"><a class="item" style="margin-right: -32px; color: red;">({{i}})</a></li>
+          <li routerLinkActive="active"><a routerLink='/shopping-cart'><span  class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a></li>
+          <li class="dropdown" appDropdown><a class="dropdown-toggle" routerLink='/' data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="glyphicon glyphicon-user"> User_Management<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a class="glyphicon glyphicon-user"> User Account</a></li>
                 <li><a href="#">Credit Card</a></li>

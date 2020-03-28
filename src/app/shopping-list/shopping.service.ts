@@ -4,6 +4,7 @@ import { Ingredient } from '../shared/ingredient.model';
 import { Subject } from 'rxjs';
 import { Price } from '../shopping-cart/price.model';
 import { Cart } from '../shared/cart.model';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({providedIn:"root"})
 export class ShoppingService{
@@ -30,7 +31,7 @@ export class ShoppingService{
 
     private addTocart:Boolean = false;
 
-    constructor(private http:HttpClient ){}
+    constructor(private http:HttpClient , private authService:AuthService){}
 
     addToShoppingList(ingredient : Ingredient[] ){
         this.ingredients.push(...ingredient);
