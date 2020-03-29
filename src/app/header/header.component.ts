@@ -9,7 +9,7 @@ import { AuthService } from '../auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  isAuthonticated:boolean= false;
+  public isAuthonticated:boolean= false;
   i : number;
   ingredients = false;
 
@@ -20,14 +20,18 @@ export class HeaderComponent implements OnInit {
       .subscribe( isAuthonticated => {
           this.isAuthonticated = isAuthonticated;
       });
-      
+
     this.shoppingService.getIngredientsDetailsToHeader()
-      .subscribe( cart => {
+      .subscribe( cart => { 
         this.i = cart.length;
       });
     if(this.i>0){
       this.ingredients = true;
     }
+  }
+
+  logOut(){
+    this.isAuthonticated = false;
   }
 
 }

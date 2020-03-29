@@ -62,7 +62,7 @@ import { AuthInterceptor } from './auth/auth-interceptor';
     MatProgressSpinnerModule,
     MatPaginatorModule
   ],
-  providers: [RecipeService,ShoppingService,AuthService,{provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}],
+  providers: [{provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

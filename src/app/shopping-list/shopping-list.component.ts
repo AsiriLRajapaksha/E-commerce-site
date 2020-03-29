@@ -16,11 +16,16 @@ export class ShoppingListComponent implements OnInit , OnDestroy {
   index:number;
   addTocart:Boolean = false;
   isIngredients:boolean = false;
-  isAuthonticated:boolean = true;
+  isAuthonticated= false;
 
-  constructor(private shoppingService: ShoppingService) { }
+  constructor(private shoppingService: ShoppingService, public authService:AuthService) { }
 
   ngOnInit() {
+
+    this.authService.getAuthStatusListner()
+      .subscribe( isAuthonticated => { 
+          this.isAuthonticated = isAuthonticated;
+      });
 
     this.ingredients = this.shoppingService.getShoppingListDetails();
     this.subscribe = this.shoppingService.getUpdatedShoppingList()
@@ -50,6 +55,7 @@ export class ShoppingListComponent implements OnInit , OnDestroy {
     // }else{
     //   alert("Please Login Before add Ingredients to the cart........");
     // }
+
     this.addTocart= true;
       this.shoppingService.addToShoopingcart(this.addTocart);
       this.shoppingService.getPrices();
