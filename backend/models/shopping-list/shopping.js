@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const shoppingListSchema = new mongoose.Schema({
-    ingredients : {
+    cart : {
         type: Array
     }
 });
