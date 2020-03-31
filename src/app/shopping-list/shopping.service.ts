@@ -116,7 +116,7 @@ export class ShoppingService{
     }
 
     getIngredientsDetailsToCart(){
-        this.addShoppingListToCart();
+        // this.addShoppingListToCart();
         return this.cart;
     }
 
@@ -129,15 +129,24 @@ export class ShoppingService{
         this.cart.splice(i ,1);
         this.updatedShoppingCart.next(this.cart);
     }
+
+    placeholder(){
+        const cart = this.cart;
+        this.http.post<{message:string}>('http://localhost:3000/api/shopping' , cart)
+         .subscribe( response => {
+            console.log(response.message);
+         });
+    }
     
 
-    addShoppingListToCart() {
-        // this.ingredients.push(...ingredient);
-        this.http.post<{message:string}>('http://localhost:3000/api/shopping' , this.cart)
-            .subscribe( response => {
-                console.log(response.message);
-            });
-    }
+    // addShoppingListToCart() {
+    //     // this.ingredients.push(...ingredient);
+    //     const cart = this.cart;
+    //     this.http.post<{message:string}>('http://localhost:3000/api/shopping' , cart)
+    //         .subscribe( response => {
+    //             console.log(response.message);
+    //         });
+    // }
 
     // getShoppingList(){
     //     this.http.get<{ingredients : Ingredient[]}>('http://localhost:3000/api/shopping')
