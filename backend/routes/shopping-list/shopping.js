@@ -5,7 +5,7 @@ const ShoppingList = require('../../models/shopping-list/shopping');
 router.post('/' , async (req , res) => {
     // console.log(req.body);
     const shopping = new ShoppingList({
-        cart:req.body
+        ingredients:req.body
     });
 
     const result = await shopping.save();

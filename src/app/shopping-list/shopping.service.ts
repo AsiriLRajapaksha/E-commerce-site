@@ -130,19 +130,18 @@ export class ShoppingService{
         this.updatedShoppingCart.next(this.cart);
     }
 
-    placeholder(){
-        const cart = this.cart;
-        this.http.post<{message:string}>('http://localhost:3000/api/shopping' , cart)
-         .subscribe( response => {
-            console.log(response.message);
-         });
-    }
+    // placeholder(){
+    //     const cart = this.cart;
+    //     this.http.post<{message:string}>('http://localhost:3000/api/shopping' , cart)
+    //      .subscribe( response => {
+    //         console.log(response.message);
+    //      });
+    // }
     
 
     // addShoppingListToCart() {
     //     // this.ingredients.push(...ingredient);
-    //     const cart = this.cart;
-    //     this.http.post<{message:string}>('http://localhost:3000/api/shopping' , cart)
+    //     this.http.post<{message:string}>('http://localhost:3000/api/shopping' , this.ingredients)
     //         .subscribe( response => {
     //             console.log(response.message);
     //         });
