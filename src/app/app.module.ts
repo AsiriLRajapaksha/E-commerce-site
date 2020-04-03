@@ -31,6 +31,7 @@ import {
 } from "@angular/material";
 import { AuthService } from './auth/auth.service';
 import { AuthInterceptor } from './auth/auth-interceptor';
+import { EmailComponent } from './auth/email/email.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { AuthInterceptor } from './auth/auth-interceptor';
     RecipeItemComponent,
     ShoppingListComponent,
     ShoppingEditComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    EmailComponent
   ],
   imports: [
     BrowserModule,
