@@ -26,8 +26,8 @@ export class ShoppingCartComponent implements OnInit {
     this.shoppingService.deleteIngredientInCart(i);
   }
 
-  // placeholder(){
-  //   this.shoppingService.placeholder();
-  // }
+  placeholder(){
+    this.shoppingService.placeholder();
+  }
 
 }

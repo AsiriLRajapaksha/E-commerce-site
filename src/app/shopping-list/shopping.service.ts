@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { Price } from '../shopping-cart/price.model';
 import { Cart } from '../shared/cart.model';
 import { AuthService } from '../auth/auth.service';
+import { Oreder } from '../shared/order.model';
 
 @Injectable({providedIn:"root"})
 export class ShoppingService{
@@ -22,6 +23,8 @@ export class ShoppingService{
     private Total = 0 ;
 
     private cart:Cart[] = [];
+
+    private order:Oreder;
 
     private updatedShoppingList = new Subject<Ingredient[]>();
 
@@ -130,13 +133,14 @@ export class ShoppingService{
         this.updatedShoppingCart.next(this.cart);
     }
 
-    // placeholder(){
-    //     const cart = this.cart;
-    //     this.http.post<{message:string}>('http://localhost:3000/api/shopping' , cart)
-    //      .subscribe( response => {
-    //         console.log(response.message);
-    //      });
-    // }
+    placeholder(){
+        this.order.cart = this.cart;
+        // this.order.user = 
+        this.http.post<{message:string}>('http://localhost:3000/api/shopping' , this.cart)
+         .subscribe( response => {
+            console.log(response.message);
+         });
+    }
     
 
     // addShoppingListToCart() {

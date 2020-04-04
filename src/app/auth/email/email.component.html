@@ -1,29 +1,48 @@
 
 <div class="container">
-    <h1 class="brand"><span>Acme</span> Web Design</h1>
+    <h1 class="brand"><span>Recipe Book</span>Service</h1>
     <div class="wrapper animated bounceInLeft">
       <div class="company-info">
-        <h3>Acme Web Design</h3>
+        <h3>Recipe Book Service</h3>
         <ul>
-          <li><i class="fa fa-road"></i> 44 Something st</li>
-          <li><i class="fa fa-phone"></i> (555) 555-5555</li>
-          <li><i class="fa fa-envelope"></i> test@acme.test</li>
+          <li><i class="fa fa-road"></i> 44/13 Kandy main st</li>
+          <li><i class="fa fa-phone"></i> (081) 555-5555</li>
+          <li><i class="fa fa-envelope"></i> sl@recipe.com</li>
         </ul>
       </div>
+
       <div class="contact">
         <h3>Email Us</h3>
-        <form method="POST" action="send">
+        <form 
+          (submit)="onSendDetails()"
+          #detailsForm="ngForm">
           <p>
             <label>Name</label>
-            <input type="text" name="name">
+            <input 
+              name="name"
+              ngModel
+              type="text"
+              placeholder="Name"
+              required>
           </p>
           <p>
-            <label>Company</label>
-            <input type="text" name="company">
+            <label>Address</label>
+            <input 
+              name="address"
+              ngModel
+              type="text"
+              placeholder="Address"
+              required>
           </p>
           <p>
             <label>Email Address</label>
-            <input type="email" name="email">
+            <input 
+              type="email" 
+              name="email"
+              ngModel
+              placeholder="E-mail"
+              required
+              >
           </p>
           <p>
             <label>Phone Number</label>
