@@ -1,6 +1,6 @@
-
-<div class="container">
-    <h1 class="brand"><span>Recipe Book</span>Service</h1>
+<div class="bodyc">
+  <div class="container">
+    <h1 class="brand"><span>Recipe Book</span> Service</h1>
     <div class="wrapper animated bounceInLeft">
       <div class="company-info">
         <h3>Recipe Book Service</h3>
@@ -16,8 +16,9 @@
         <form 
           (submit)="onSendDetails()"
           #detailsForm="ngForm">
+
           <p>
-            <label>Name</label>
+            <!-- <label>Name</label> -->
             <input 
               name="name"
               ngModel
@@ -26,7 +27,7 @@
               required>
           </p>
           <p>
-            <label>Address</label>
+            <!-- <label>Address</label> -->
             <input 
               name="address"
               ngModel
@@ -35,22 +36,26 @@
               required>
           </p>
           <p>
-            <label>Email Address</label>
+            <!-- <label>Email Address</label> -->
             <input 
               type="email" 
-              name="email"
               ngModel
+              name="email"
               placeholder="E-mail"
               required
               >
           </p>
           <p>
-            <label>Phone Number</label>
-            <input type="text" name="phone">
+            <!-- <label>Phone Number</label> -->
+            <input 
+              type="text" 
+              ngModel
+              name="phone"
+              placeholder="Phone">
           </p>
           <p class="full">
-            <label>Message</label>
-            <textarea name="message" rows="5"></textarea>
+            <!-- <label>Message</label> -->
+            <textarea name="message" ngModel placeholder="Message" rows="5"></textarea>
           </p>
           <p class="full">
             <button type="submit">Submit</button>
@@ -59,3 +64,4 @@
       </div>
     </div>
   </div>
+</div>

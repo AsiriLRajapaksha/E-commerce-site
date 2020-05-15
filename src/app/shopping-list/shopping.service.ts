@@ -84,16 +84,19 @@ export class ShoppingService{
         var amount:number;
  
         for(var i = 0 ; i<this.ingredients.length ; i++){
+            console.log("ajhsadjkasbkdhakahdfksdfhdsa");
             var sum = 0;
             name = this.ingredients[i].name;
+            console.log(name);
             amount = this.ingredients[i].amount;
 
             for(var j = 0 ; j < this.getPriceForCalculation.length ; j++){
-                
+                console.log("ajhsadjkasbkdhakahdfksdfhdsa + jzkshlfkdsnlsdfsd;d " + this.getPriceForCalculation[j]);
                 if(this.getPriceForCalculation[j].name == name){
                     sum += this.getPriceForCalculation[j].price * this.ingredients[i].amount;
                     this.Total += sum;
                     this.cart.push((new Cart(name ,amount ,sum)));
+                    console.log("ajhsadjkasbkdhakahdfksdfhdsa + jzkshlfkdsnlsdfsd;d");
                     this.updatedShoppingCart.next(this.cart);
                     console.log(sum);
                 }
@@ -108,6 +111,7 @@ export class ShoppingService{
             this.http.get<{prices:any}>('http://localhost:3000/api/shopping-cart')
             .subscribe( price => {
                 this.getPriceForCalculation = price.prices;
+                console.log(" get price: "+ price);
                 console.log(this.getPriceForCalculation);
                 this.calculatePrice();
             });

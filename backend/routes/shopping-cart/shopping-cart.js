@@ -24,6 +24,7 @@ router.get('/', async (req, res) => {
         console.log(prices);
         res.status(200).send({prices:prices});    
     }else{
+        console.log("not found");
         res.status(404).send({
             message:"Not Found"
         });

@@ -56,7 +56,7 @@ export class ShoppingListComponent implements OnInit , OnDestroy {
     //   alert("Please Login Before add Ingredients to the cart........");
     // }
 
-    this.addTocart= true;
+      this.addTocart= true;
       this.shoppingService.addToShoopingcart(this.addTocart);
       this.shoppingService.getPrices();
   }

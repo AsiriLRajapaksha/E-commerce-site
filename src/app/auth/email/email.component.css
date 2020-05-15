@@ -27,7 +27,7 @@
   }
   
   .brand span{
-    color:#fff;
+    color: #886464;
   }
   
   .wrapper{
@@ -90,7 +90,7 @@
   }
   
   /* LARGE SCREENS */
-  @media(min-width:700px){
+  @media(min-width:70px){
     .wrapper{
       display: grid;
       grid-template-columns: 1fr 2fr;
